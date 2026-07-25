@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="google-adsense-account" content="ca-pub-9392282410784308">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9392282410784308" crossorigin="anonymous"></script>
+<title>연료비 계산기 | 가솔린·경유·LPG·전기·수소 유지비 비교 - 카시스턴트</title>
+<meta name="description" content="연료 종류와 연비, 월평균 주행거리를 입력하면 가솔린, 경유, LPG, 전기, 수소 등 모든 차종의 월간·연간 예상 연료비를 계산해주는 무료 계산기입니다." />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 32 32" width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="17" width="26" height="8" rx="4" fill="white"/><rect x="9" y="9" width="14" height="9" rx="4.5" fill="white"/><circle cx="9" cy="25" r="2.3" fill="var(--color-primary)"/><circle cx="23" cy="25" r="2.3" fill="var(--color-primary)"/><circle cx="12.5" cy="13" r="2.3" fill="none" stroke="var(--color-primary)" stroke-width="1.4"/><circle cx="19.5" cy="13" r="2.3" fill="none" stroke="var(--color-primary)" stroke-width="1.4"/><line x1="14.8" y1="13" x2="17.2" y2="13" stroke="var(--color-primary)" stroke-width="1.4"/><line x1="10.3" y1="12.1" x2="7.3" y2="10.5" stroke="var(--color-primary)" stroke-width="1.4" stroke-linecap="round"/><line x1="21.7" y1="12.1" x2="24.7" y2="10.5" stroke="var(--color-primary)" stroke-width="1.4" stroke-linecap="round"/></svg></span> 카시스턴트</a>
+    <nav class="main-nav">
+      <a href="../index.html">홈</a>
+      <div class="nav-item">
+        <button type="button" class="dropdown-toggle">비용계산기 <span class="caret">▾</span></button>
+        <div class="dropdown-menu">
+          <a href="car-tax-calculator.html">자동차세 계산기</a>
+          <a href="acquisition-tax-calculator.html">취득세 계산기</a>
+          <a href="insurance-estimator.html">보험료 추정기</a>
+          <a href="fuel-cost-calculator.html" class="active">연료비 계산기</a>
+          <a href="maintenance-cost-estimator.html">정비비용 추정기</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button type="button" class="dropdown-toggle">내 차 관리 <span class="caret">▾</span></button>
+        <div class="dropdown-menu">
+          <a href="../dashboard.html">내 차고</a>
+          <a href="../dashboard.html#schedule">다가오는 일정</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button type="button" class="dropdown-toggle">가이드 <span class="caret">▾</span></button>
+        <div class="dropdown-menu">
+          <a href="../guide/index.html">가이드 전체보기</a>
+          <a href="../guide/engine-oil-guide.html">엔진오일 가이드</a>
+          <a href="../guide/battery-guide.html">배터리 가이드</a>
+          <a href="../guide/car-tax-guide.html">자동차세 가이드</a>
+          <a href="../guide/insurance-saving-guide.html">보험료 절약 가이드</a>
+          <a href="../guide/maintenance-checklist-guide.html">정기점검 체크리스트</a>
+        </div>
+      </div>
+      <a href="../about.html">소개</a>
+      <span id="authNavSlot" data-prefix="../"></span>
+    </nav>
+    <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="breadcrumb"><a href="../index.html">홈</a> / 연료비 계산기</p>
+    <h1>연료비 계산기</h1>
+    <p>가솔린·경유·LPG부터 전기·수소까지, 연료 종류를 선택하고 연비와 월 주행거리를 입력하면 예상 유지비를 계산해 드립니다.</p>
+  </div>
+</section>
+
+<div class="container section">
+  <div class="calc-layout">
+    <div class="card">
+      <h2>정보 입력</h2>
+      <p class="card-sub">단가는 매일 변동하므로 기본값이 자동으로 채워지며, 실제 이용하시는 가격으로 직접 수정할 수 있습니다.</p>
+
+      <div class="field">
+        <label for="fuelType">연료 종류</label>
+        <select id="fuelType">
+          <option value="gasoline">가솔린</option>
+          <option value="diesel">경유(디젤)</option>
+          <option value="lpg">LPG</option>
+          <option value="ev">전기</option>
+          <option value="hydrogen">수소</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="efficiency" id="efficiencyLabel">연비 (km/L)</label>
+        <input type="number" id="efficiency" step="0.1" placeholder="예: 12.5" min="0.1" />
+      </div>
+
+      <div class="field">
+        <label for="unitPrice" id="unitPriceLabel">단가 (원/L)</label>
+        <input type="number" id="unitPrice" min="0" />
+        <div class="hint">최근 평균 시세로 기본값이 채워져 있습니다. 실제 이용 가격으로 수정하세요.</div>
+      </div>
+
+      <div class="field">
+        <label for="monthlyDistance">월평균 주행거리 (km)</label>
+        <input type="number" id="monthlyDistance" placeholder="예: 1200" min="0" />
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <div class="card" id="resultCard">
+        <div class="result-empty">
+          <div class="icon">⛽</div>
+          <p>정보를 입력하면 자동으로 계산됩니다.</p>
+        </div>
+      </div>
+      <div class="ad-slot">광고 영역 (Google AdSense 승인 후 게재)</div>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="card prose">
+      <h2>계산 방식 안내</h2>
+      <p>월평균 주행거리를 연비로 나누어 월간 연료(또는 전기·수소) 사용량을 구한 뒤, 단가를 곱해 월간·연간 예상 비용을 계산합니다. 전기차는 kWh, 수소차는 kg 단위로 환산해 동일한 방식으로 계산됩니다.</p>
+      <div class="info-callout">
+        연료 단가는 지역과 주유소·충전소, 시점에 따라 하루에도 달라질 수 있습니다. 전국 최저가는 <a href="https://www.opinet.co.kr" target="_blank" rel="noopener">오피넷</a>에서 확인할 수 있습니다.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>카시스턴트</h4>
+        <p>내 차의 보험료·세금·정비 이력을 한곳에서 관리하는 자동차 유지관리 통합 사이트입니다.</p>
+      </div>
+      <div>
+        <h4>비용계산기</h4>
+        <ul>
+          <li><a href="car-tax-calculator.html">자동차세 계산기</a></li>
+          <li><a href="acquisition-tax-calculator.html">취득세 계산기</a></li>
+          <li><a href="insurance-estimator.html">보험료 추정기</a></li>
+          <li><a href="fuel-cost-calculator.html">연료비 계산기</a></li>
+          <li><a href="maintenance-cost-estimator.html">정비비용 추정기</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>사이트 정보</h4>
+        <ul>
+          <li><a href="../about.html">사이트 소개</a></li>
+          <li><a href="../guide/index.html">정비 가이드</a></li>
+          <li><a href="../contact.html">문의하기</a></li>
+          <li><a href="../privacy.html">개인정보처리방침</a></li>
+          <li><a href="../terms.html">이용약관</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 카시스턴트. All rights reserved.</span>
+      <span>본 사이트의 계산 결과는 참고용이며 실제 금액과 다를 수 있습니다.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/maintenance-data.js"></script>
+<script src="../js/fuel-cost-calculator.js"></script>
+<script src="../js/main.js"></script>
+<script>
+var UNIT_LABEL_BY_TYPE = { gasoline: "L", diesel: "L", lpg: "L", ev: "kWh", hydrogen: "kg" };
+
+function applyFuelDefaults() {
+  var fuelType = document.getElementById("fuelType").value;
+  var defaults = FUEL_UNIT_DEFAULTS[fuelType];
+  var unit = defaults.unit;
+
+  document.getElementById("efficiencyLabel").textContent = "연비 (km/" + unit + ")";
+  document.getElementById("unitPriceLabel").textContent = "단가 (원/" + unit + ")";
+  document.getElementById("unitPrice").value = defaults.price;
+
+  runFuelCostCalc();
+}
+
+function runFuelCostCalc() {
+  var fuelType = document.getElementById("fuelType").value;
+  var efficiency = parseFloat(document.getElementById("efficiency").value);
+  var unitPrice = parseFloat(document.getElementById("unitPrice").value);
+  var monthlyDistance = parseFloat(document.getElementById("monthlyDistance").value);
+
+  if (!efficiency || !monthlyDistance) {
+    document.getElementById("resultCard").innerHTML = '<div class="result-empty"><div class="icon">⛽</div><p>정보를 입력하면 자동으로 계산됩니다.</p></div>';
+    return;
+  }
+
+  var result = calcFuelCost({ fuelType: fuelType, efficiency: efficiency, monthlyDistanceKm: monthlyDistance, unitPrice: unitPrice });
+
+  if (result.error) {
+    document.getElementById("resultCard").innerHTML = '<div class="error-box">' + result.error + '</div>';
+    return;
+  }
+
+  logCalculatorUsage("fuel_cost");
+
+  var unit = UNIT_LABEL_BY_TYPE[fuelType];
+  var html = "";
+  html += '<h2 style="margin-bottom:18px;">계산 결과</h2>';
+  html += '<div class="result-headline">';
+  html += '<div class="label">월 예상 ' + FUEL_UNIT_DEFAULTS[fuelType].label + ' 비용</div>';
+  html += '<div class="amount">' + formatWon(result.monthlyCost) + '</div>';
+  html += '<div class="amount-yearly">연간 약 ' + formatWon(result.yearlyCost) + '</div>';
+  html += '</div>';
+
+  html += '<table class="result-table">';
+  html += '<tr><th>월 사용량</th><td>' + result.monthlyUsage.toFixed(1) + unit + '</td></tr>';
+  html += '</table>';
+
+  html += '<div class="disclaimer-box"><span class="mark">ℹ</span><span>본 결과는 입력하신 연비·단가를 기준으로 한 단순 계산이며, 실제 주행 조건(계절, 정체, 냉난방 사용 등)에 따라 차이가 있을 수 있습니다.</span></div>';
+
+  document.getElementById("resultCard").innerHTML = html;
+}
+
+document.getElementById("fuelType").addEventListener("change", applyFuelDefaults);
+document.getElementById("efficiency").addEventListener("input", runFuelCostCalc);
+document.getElementById("unitPrice").addEventListener("input", runFuelCostCalc);
+document.getElementById("monthlyDistance").addEventListener("input", runFuelCostCalc);
+
+applyFuelDefaults();
+</script>
+</body>
+</html>

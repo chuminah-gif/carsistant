@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="google-adsense-account" content="ca-pub-9392282410784308">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9392282410784308" crossorigin="anonymous"></script>
+<title>자동차세 계산기 | 연료·배기량·구입일별 예상 세액 확인 - 카시스턴트</title>
+<meta name="description" content="연료 종류(가솔린·경유·LPG·하이브리드·전기·수소)와 배기량, 구입일을 입력하면 자동차세, 지방교육세, 차령 경감률, 연납 할인액까지 자동으로 계산해주는 무료 자동차세 계산기입니다." />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo"><span class="logo-mark"><svg viewBox="0 0 32 32" width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="17" width="26" height="8" rx="4" fill="white"/><rect x="9" y="9" width="14" height="9" rx="4.5" fill="white"/><circle cx="9" cy="25" r="2.3" fill="var(--color-primary)"/><circle cx="23" cy="25" r="2.3" fill="var(--color-primary)"/><circle cx="12.5" cy="13" r="2.3" fill="none" stroke="var(--color-primary)" stroke-width="1.4"/><circle cx="19.5" cy="13" r="2.3" fill="none" stroke="var(--color-primary)" stroke-width="1.4"/><line x1="14.8" y1="13" x2="17.2" y2="13" stroke="var(--color-primary)" stroke-width="1.4"/><line x1="10.3" y1="12.1" x2="7.3" y2="10.5" stroke="var(--color-primary)" stroke-width="1.4" stroke-linecap="round"/><line x1="21.7" y1="12.1" x2="24.7" y2="10.5" stroke="var(--color-primary)" stroke-width="1.4" stroke-linecap="round"/></svg></span> 카시스턴트</a>
+    <nav class="main-nav">
+      <a href="../index.html">홈</a>
+      <div class="nav-item">
+        <button type="button" class="dropdown-toggle">비용계산기 <span class="caret">▾</span></button>
+        <div class="dropdown-menu">
+          <a href="car-tax-calculator.html" class="active">자동차세 계산기</a>
+          <a href="acquisition-tax-calculator.html">취득세 계산기</a>
+          <a href="insurance-estimator.html">보험료 추정기</a>
+          <a href="fuel-cost-calculator.html">연료비 계산기</a>
+          <a href="maintenance-cost-estimator.html">정비비용 추정기</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button type="button" class="dropdown-toggle">내 차 관리 <span class="caret">▾</span></button>
+        <div class="dropdown-menu">
+          <a href="../dashboard.html">내 차고</a>
+          <a href="../dashboard.html#schedule">다가오는 일정</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button type="button" class="dropdown-toggle">가이드 <span class="caret">▾</span></button>
+        <div class="dropdown-menu">
+          <a href="../guide/index.html">가이드 전체보기</a>
+          <a href="../guide/engine-oil-guide.html">엔진오일 가이드</a>
+          <a href="../guide/battery-guide.html">배터리 가이드</a>
+          <a href="../guide/car-tax-guide.html">자동차세 가이드</a>
+          <a href="../guide/insurance-saving-guide.html">보험료 절약 가이드</a>
+          <a href="../guide/maintenance-checklist-guide.html">정기점검 체크리스트</a>
+        </div>
+      </div>
+      <a href="../about.html">소개</a>
+      <span id="authNavSlot" data-prefix="../"></span>
+    </nav>
+    <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="breadcrumb"><a href="../index.html">홈</a> / 자동차세 계산기</p>
+    <h1>자동차세 계산기</h1>
+    <p>연료 종류와 배기량, 구입일을 입력하면 값이 바뀔 때마다 자동으로 예상 자동차세를 계산해 드립니다.</p>
+  </div>
+</section>
+
+<div class="container section">
+  <div class="calc-layout">
+    <div class="card">
+      <h2>정보 입력</h2>
+      <p class="card-sub">비영업용 승용차(자가용) 기준 계산기입니다. 영업용 차량, 화물차, 경차 특례 등은 반영되지 않습니다. 입력한 값은 바로바로 자동 계산됩니다.</p>
+
+      <div class="field-row" style="margin-bottom:18px;">
+        <div>
+          <label style="display:block; font-size:0.88rem; font-weight:700; margin-bottom:6px;" for="makerName">제조사 (선택)</label>
+          <input type="text" id="makerName" placeholder="예: 현대" />
+        </div>
+        <div>
+          <label style="display:block; font-size:0.88rem; font-weight:700; margin-bottom:6px;" for="modelName">모델명 (선택)</label>
+          <input type="text" id="modelName" placeholder="예: 아반떼" />
+        </div>
+      </div>
+      <div class="hint" style="margin-top:-10px; margin-bottom:18px;">제조사·모델명은 결과 화면 표시용 참고 정보이며, 세액 계산에는 사용되지 않습니다.</div>
+
+      <div class="field">
+        <label for="fuelType">연료(차종) 종류</label>
+        <select id="fuelType">
+          <option value="gasoline">가솔린</option>
+          <option value="diesel">경유(디젤)</option>
+          <option value="lpg">LPG</option>
+          <option value="hybrid">하이브리드</option>
+          <option value="ev">전기</option>
+          <option value="hydrogen">수소</option>
+        </select>
+      </div>
+
+      <div class="field" id="displacementField">
+        <label for="displacement">배기량 (cc)</label>
+        <input type="number" id="displacement" placeholder="예: 1999" min="1" />
+        <div class="hint">자동차등록증 또는 계기판에서 확인할 수 있습니다.</div>
+      </div>
+
+      <div class="field">
+        <label for="purchaseDate">구입일 (최초 등록일)</label>
+        <input type="date" id="purchaseDate" />
+        <div class="hint">차령 경감률 계산에 정확한 날짜가 사용됩니다.</div>
+      </div>
+
+      <div class="field">
+        <label style="margin-bottom:10px;">
+          <input type="checkbox" id="applyPrepay" style="width:auto; margin-right:8px;" />
+          1월 연납 할인 적용 (약 5% 할인)
+        </label>
+        <div class="hint">연 1회 자동차세를 미리 납부하면 할인을 받을 수 있습니다. 정확한 할인율은 매년 위택스 공고를 확인하세요.</div>
+      </div>
+    </div>
+
+    <div class="result-panel">
+      <div class="card" id="resultCard">
+        <div class="result-empty">
+          <div class="icon">🧮</div>
+          <p>구입일을 입력하면 자동으로 계산됩니다.</p>
+        </div>
+      </div>
+      <div class="ad-slot">광고 영역 (Google AdSense 승인 후 게재)</div>
+    </div>
+  </div>
+</div>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="card prose">
+      <h2>자동차세 계산 방식 안내</h2>
+      <p>가솔린·경유·LPG·하이브리드처럼 엔진 배기량이 있는 차종은 <strong>배기량(cc) × cc당 세액 × 차령 경감률</strong>로 자동차세가 산출되며, 그 30%에 해당하는 지방교육세를 더해 연세액이 결정됩니다.</p>
+      <table>
+        <tr><th>배기량 구간</th><th>cc당 세액</th></tr>
+        <tr><td>1,000cc 이하</td><td>80원</td></tr>
+        <tr><td>1,000cc 초과 ~ 1,600cc 이하</td><td>140원</td></tr>
+        <tr><td>1,600cc 초과</td><td>200원</td></tr>
+      </table>
+      <p>전기차·수소차는 배기량이 없어 <strong>기준세액 10만원 정액</strong>(+지방교육세 3만원, 합계 13만원)으로 과세됩니다. 하이브리드는 취득세·개별소비세 감면과 달리 자동차세 자체는 별도 감면 없이 배기량 기준으로 동일하게 계산됩니다.</p>
+      <p>차령(구입 후 경과 연수) 3년차부터 5%의 세액이 경감되며, 이후 매년 5%p씩 늘어나 12년 이상이면 최대 50%까지 경감됩니다.</p>
+      <div class="info-callout">
+        연납(주로 1월) 신청 시 받을 수 있는 할인율은 매년 지자체·위택스 공고에 따라 소폭 달라집니다. 이 계산기는 약 5% 내외의 대표적인 할인율을 기준으로 추정하므로, 정확한 할인율과 납부 방법은 <a href="https://www.wetax.go.kr" target="_blank" rel="noopener">위택스</a>에서 확인해 주세요.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>카시스턴트</h4>
+        <p>내 차의 보험료·세금·정비 이력을 한곳에서 관리하는 자동차 유지관리 통합 사이트입니다.</p>
+      </div>
+      <div>
+        <h4>비용계산기</h4>
+        <ul>
+          <li><a href="car-tax-calculator.html">자동차세 계산기</a></li>
+          <li><a href="acquisition-tax-calculator.html">취득세 계산기</a></li>
+          <li><a href="insurance-estimator.html">보험료 추정기</a></li>
+          <li><a href="fuel-cost-calculator.html">연료비 계산기</a></li>
+          <li><a href="maintenance-cost-estimator.html">정비비용 추정기</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>사이트 정보</h4>
+        <ul>
+          <li><a href="../about.html">사이트 소개</a></li>
+          <li><a href="../guide/index.html">정비 가이드</a></li>
+          <li><a href="../contact.html">문의하기</a></li>
+          <li><a href="../privacy.html">개인정보처리방침</a></li>
+          <li><a href="../terms.html">이용약관</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 카시스턴트. All rights reserved.</span>
+      <span>본 사이트의 계산 결과는 참고용이며 실제 금액과 다를 수 있습니다.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="../js/maintenance-data.js"></script>
+<script src="../js/car-tax-calculator.js"></script>
+<script src="../js/main.js"></script>
+<script>
+var FUEL_LABELS = { gasoline: "가솔린", diesel: "경유", lpg: "LPG", hybrid: "하이브리드", ev: "전기", hydrogen: "수소" };
+
+function toggleDisplacementField() {
+  var fuelType = document.getElementById("fuelType").value;
+  var isFlat = fuelType === "ev" || fuelType === "hydrogen";
+  var field = document.getElementById("displacementField");
+  var input = document.getElementById("displacement");
+  field.style.display = isFlat ? "none" : "block";
+  if (isFlat) input.value = "";
+}
+
+function runCarTaxCalc() {
+  toggleDisplacementField();
+
+  var fuelType = document.getElementById("fuelType").value;
+  var displacement = parseInt(document.getElementById("displacement").value, 10);
+  var purchaseDate = document.getElementById("purchaseDate").value;
+  var applyPrepay = document.getElementById("applyPrepay").checked;
+  var maker = document.getElementById("makerName").value.trim();
+  var model = document.getElementById("modelName").value.trim();
+
+  if (!purchaseDate) {
+    document.getElementById("resultCard").innerHTML = '<div class="result-empty"><div class="icon">🧮</div><p>구입일을 입력하면 자동으로 계산됩니다.</p></div>';
+    return;
+  }
+
+  var result = calcCarTax({ fuelType: fuelType, displacementCc: displacement, purchaseDate: purchaseDate, applyAnnualPrepay: applyPrepay });
+
+  if (result.error) {
+    document.getElementById("resultCard").innerHTML = '<div class="error-box">' + result.error + '</div>';
+    return;
+  }
+
+  logCalculatorUsage("car_tax");
+
+  var vehicleLabel = [maker, model].filter(Boolean).join(" ");
+  var titleLabel = vehicleLabel ? vehicleLabel + "의 예상 자동차세" : "계산 결과";
+
+  var html = "";
+  html += '<h2 style="margin-bottom:18px;">' + titleLabel + '</h2>';
+  html += '<div class="result-headline">';
+  html += '<div class="label">' + (applyPrepay ? "연납 시 납부액" : "연세액 (자동차세 + 지방교육세)") + '</div>';
+  html += '<div class="amount">' + formatWon(result.finalAmount) + '</div>';
+  if (!applyPrepay) {
+    html += '<div class="amount-yearly">6월·12월 정기분 각 ' + formatWon(result.halfYear) + '</div>';
+  } else {
+    html += '<div class="amount-yearly">연납 할인 전 ' + formatWon(result.totalAnnual) + ' 중 ' + formatWon(result.prepayDiscount) + ' 할인</div>';
+  }
+  html += '</div>';
+
+  html += '<table class="result-table">';
+  html += '<tr><th>연료 종류</th><td>' + FUEL_LABELS[fuelType] + '</td></tr>';
+  html += '<tr><th>차령(경과 연수)</th><td>' + result.vehicleAgeYears + '년</td></tr>';
+  html += '<tr><th>' + (result.isFlatRate ? "과세 방식" : "cc당 세액") + '</th><td>' + (result.isFlatRate ? "정액(전기·수소차)" : result.ccRate + '원/cc') + '</td></tr>';
+  html += '<tr><th>차령 경감률</th><td>' + result.reductionRate + '%</td></tr>';
+  html += '<tr><th>자동차세</th><td>' + formatWon(result.carTax) + '</td></tr>';
+  html += '<tr><th>지방교육세(30%)</th><td>' + formatWon(result.educationTax) + '</td></tr>';
+  html += '</table>';
+
+  html += '<div class="disclaimer-box"><span class="mark">ℹ</span><span>본 결과는 비영업용 승용차 기준 세율 구조를 단순화한 참고용 추정치입니다. 실제 세액은 관할 지자체 조례, 신규 등록일 기준 월할 계산 등에 따라 달라질 수 있으니 위택스에서 정확한 금액을 확인하세요.</span></div>';
+
+  document.getElementById("resultCard").innerHTML = html;
+}
+
+document.getElementById("fuelType").addEventListener("change", runCarTaxCalc);
+document.getElementById("displacement").addEventListener("input", runCarTaxCalc);
+document.getElementById("purchaseDate").addEventListener("change", runCarTaxCalc);
+document.getElementById("applyPrepay").addEventListener("change", runCarTaxCalc);
+document.getElementById("makerName").addEventListener("input", runCarTaxCalc);
+document.getElementById("modelName").addEventListener("input", runCarTaxCalc);
+
+toggleDisplacementField();
+</script>
+</body>
+</html>
