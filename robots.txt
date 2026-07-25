@@ -3,4 +3,4 @@ Allow: /
 Disallow: /dashboard.html
 Disallow: /vehicle.html
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://carsistant.vercel.app/sitemap.xml
