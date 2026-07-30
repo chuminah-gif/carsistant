@@ -63,6 +63,16 @@ var MAINTENANCE_ITEMS = [
     note: "4본 교체 기준 대략적인 비용이며, 제조사·타이어 등급에 따라 차이가 큽니다."
   },
   {
+    key: "inspection",
+    label: "자동차 정기검사",
+    icon: "🔍",
+    intervalMonths: 24,
+    intervalKm: null,
+    avgCostMin: 17000,
+    avgCostMax: 29000,
+    note: "비영업용 승용차는 신규등록 후 일정 기간이 지나면 이후 2년마다 정기검사를 받아야 하는 법정 의무 검사입니다. 수도권 등 종합검사 대상 지역은 배출가스 정밀검사가 추가되어 비용이 더 높을 수 있고, 부적합 판정 시 재검사 비용이 별도로 발생합니다. 정확한 검사 기간은 자동차 365(car365.go.kr)에서 확인하세요."
+  },
+  {
     key: "insurance",
     label: "자동차보험 갱신",
     icon: "📄",
