@@ -21,6 +21,13 @@ function requireLogin(prefix) {
   });
 }
 
+// 로그인한 본인 계정을 완전히 삭제합니다(회원 탈퇴). 서버(Supabase)의 delete_own_account()
+// RPC 함수가 auth.uid() 기준으로만 동작하므로 다른 사용자의 계정에는 영향을 주지 않으며,
+// auth.users 삭제 시 vehicles/maintenance_records도 FK cascade로 함께 삭제됩니다.
+function deleteOwnAccount() {
+  return supabaseClient.rpc("delete_own_account");
+}
+
 // 특정 계산기가 사용되었다는 사실만 익명으로 기록합니다.
 // 배기량, 연식, 주행거리 등 사용자가 입력한 구체적인 값은 절대 전송하지 않습니다.
 function logCalculatorUsage(calcType) {

@@ -90,7 +90,29 @@ create policy "public can insert usage"
   to anon
   with check (true);
 
+-- 5) 회원 탈퇴(계정 삭제) RPC 함수
+-- publishable/anon 키로는 auth.users를 직접 삭제할 권한이 없으므로, 로그인한 본인 계정만
+-- 삭제할 수 있는 SECURITY DEFINER 함수를 통해 위임합니다. 함수 내부에서 항상 auth.uid()만
+-- 대상으로 삼기 때문에 다른 사용자의 계정은 삭제할 수 없습니다.
+-- auth.users 행을 삭제하면 vehicles(user_id FK)→maintenance_records(vehicle_id FK)까지
+-- on delete cascade로 자동 삭제되므로 별도 정리 코드가 필요 없습니다.
+create or replace function public.delete_own_account()
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  delete from auth.users where id = auth.uid();
+end;
+$$;
+
+revoke all on function public.delete_own_account() from public;
+grant execute on function public.delete_own_account() to authenticated;
+
 -- 참고:
 -- vehicles/maintenance_records는 authenticated 사용자 본인 행에 한해 전체 CRUD(select/insert/update/delete)가 가능합니다.
 -- inquiries/calc_usage는 익명 사용자도 등록(INSERT)만 가능하고 조회는 불가능합니다.
 -- 운영자 본인이 문의 내역이나 통계를 조회하려면 Supabase 대시보드의 Table Editor를 이용하세요.
+-- delete_own_account()는 스키마 최초 적용 이후 추가된 함수이므로, 기존에 schema.sql을 이미
+-- 실행한 프로젝트라면 이 함수 정의 부분만 다시 SQL Editor에서 실행하면 됩니다(create or replace라 안전).

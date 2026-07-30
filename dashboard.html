@@ -106,6 +106,28 @@
     </div>
 
     <button class="btn btn-secondary" id="toggleAddVehicle" style="margin-top:8px;">+ 차량 추가</button>
+
+    <div class="card" id="accountCard" style="max-width:520px; margin-top:32px;">
+      <h2>계정 관리</h2>
+      <p class="card-sub">회원 탈퇴 시 등록된 모든 차량과 정비 기록이 함께 영구 삭제되며, 되돌릴 수 없습니다.</p>
+      <button type="button" class="btn btn-danger" id="showDeleteAccountBtn">회원 탈퇴</button>
+
+      <div id="deleteAccountConfirm" style="display:none; margin-top:16px;">
+        <div class="disclaimer-box">
+          <span class="mark">⚠</span>
+          <span>탈퇴하면 계정과 등록된 차량·정비 기록이 모두 즉시 삭제되며 복구할 수 없습니다. 계속하려면 아래 칸에 <strong>탈퇴</strong>를 입력해 주세요.</span>
+        </div>
+        <div class="field" style="margin-top:12px;">
+          <label for="deleteConfirmInput">확인을 위해 "탈퇴"를 입력하세요</label>
+          <input type="text" id="deleteConfirmInput" placeholder="탈퇴" />
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button type="button" class="btn btn-danger" id="confirmDeleteAccountBtn" disabled>회원 탈퇴 확정</button>
+          <button type="button" class="btn btn-secondary" id="cancelDeleteAccountBtn">취소</button>
+        </div>
+        <div id="deleteAccountResult"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -271,6 +293,44 @@ document.getElementById("addVehicleForm").addEventListener("submit", function (e
     document.getElementById("addVehicleCard").style.display = "none";
     document.getElementById("toggleAddVehicle").style.display = "inline-flex";
     loadDashboard();
+  });
+});
+
+document.getElementById("showDeleteAccountBtn").addEventListener("click", function () {
+  document.getElementById("deleteAccountConfirm").style.display = "block";
+  this.style.display = "none";
+});
+
+document.getElementById("cancelDeleteAccountBtn").addEventListener("click", function () {
+  document.getElementById("deleteAccountConfirm").style.display = "none";
+  document.getElementById("showDeleteAccountBtn").style.display = "inline-flex";
+  document.getElementById("deleteConfirmInput").value = "";
+  document.getElementById("confirmDeleteAccountBtn").disabled = true;
+  document.getElementById("deleteAccountResult").innerHTML = "";
+});
+
+document.getElementById("deleteConfirmInput").addEventListener("input", function () {
+  document.getElementById("confirmDeleteAccountBtn").disabled = this.value.trim() !== "탈퇴";
+});
+
+document.getElementById("confirmDeleteAccountBtn").addEventListener("click", function () {
+  if (!confirm("정말 탈퇴하시겠습니까? 계정과 모든 차량·정비 기록이 영구 삭제됩니다.")) return;
+
+  var btn = this;
+  var resultBox = document.getElementById("deleteAccountResult");
+  btn.disabled = true;
+  btn.textContent = "탈퇴 처리 중...";
+
+  deleteOwnAccount().then(function (res) {
+    if (res.error) {
+      btn.disabled = false;
+      btn.textContent = "회원 탈퇴 확정";
+      resultBox.innerHTML = '<div class="error-box">탈퇴 처리 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 문의하기를 통해 요청해 주세요.</div>';
+      return;
+    }
+    supabaseClient.auth.signOut().then(function () {
+      window.location.href = "index.html";
+    });
   });
 });
 </script>
