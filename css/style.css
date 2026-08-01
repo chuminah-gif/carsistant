@@ -317,14 +317,13 @@ h1, h2, h3, h4 {
 }
 
 .page-hero p a {
-  color: var(--color-accent);
+  color: #fff;
   text-decoration: underline;
   text-underline-offset: 2px;
-  font-weight: 600;
 }
 
 .page-hero p a:hover {
-  color: #fff;
+  color: var(--color-accent);
 }
 
 .breadcrumb {
