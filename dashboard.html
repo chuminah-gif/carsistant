@@ -326,7 +326,7 @@ document.getElementById("confirmDeleteAccountBtn").addEventListener("click", fun
     if (res.error) {
       btn.disabled = false;
       btn.textContent = "회원 탈퇴 확정";
-      resultBox.innerHTML = '<div class="error-box">탈퇴 처리 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 문의하기를 통해 요청해 주세요.</div>';
+      resultBox.innerHTML = '<div class="error-box">탈퇴 처리 중 오류가 발생했습니다. 잠시 후 다시 시도하거나 <a href="contact.html">문의하기</a>를 통해 요청해 주세요.</div>';
       return;
     }
     supabaseClient.auth.signOut().then(function () {
