@@ -316,13 +316,13 @@ h1, h2, h3, h4 {
   max-width: 680px;
 }
 
-.page-hero p a {
+.page-hero p:not(.breadcrumb) a {
   color: #fff;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-.page-hero p a:hover {
+.page-hero p:not(.breadcrumb) a:hover {
   color: var(--color-accent);
 }
 
